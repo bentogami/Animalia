@@ -1,9 +1,16 @@
 #include "Animalia.h"
 #include<iostream>
 
-int Mammal::Speek()
+void Human::Think()
 {
-	std::cout << "...melifluous noise...";
+	std::cout << "(...)\n";
+	Speak();
+	std::cout << "(What was that?)\n";
+}
+
+int Mammal::Speak()
+{
+	std::cout << "...mellifluous noise...\n";
 	return 0;
 }
 

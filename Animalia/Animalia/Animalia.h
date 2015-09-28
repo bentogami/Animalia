@@ -20,6 +20,7 @@ Kudos, and possibly more, for entertaining Matt.
 
 enum Sex {MALE, FEMALE, HERM};
 enum HairType {BALD, NORMAL, EXTREME};
+enum Color {RED, GREEN, BLUE, ORANGE, BLACK, PINK};
 
 class Animal
 {
@@ -38,7 +39,32 @@ private:
 public:
 	Mammal(Sex s, int year) : Animal(s,year), hair(NORMAL) { } // Default hairtype is normal
 	Mammal(Sex s, int year, HairType h) : Animal(s,year), hair(h) { } // Otherwise, let them set the hairtype
-	int Speek();
+	int Speak();
+	
+
+	
+};
+
+class Human : public Mammal
+{
+private:
+
+public:
+	Human(Sex s, int year): Mammal(s, year, NORMAL) { } //Average, and puny, human
+	Human(Sex s, int year, HairType h) : Mammal(s, year, h) { } //Human with strange hair
+	void Think();
+};
+
+class Kobold : public Animal
+{
+private:
+	Color color;
+	Sex sex;
+
+public:
+	Kobold(Sex s, int year) : Animal(s, year), color(GREEN) { } //Default color is green, the most common of kobold colors
+	Kobold(Sex s, int year, Color c) : Animal(s, year), color(c) { } //Else, set your special color kobold
+
 };
 
 #endif
