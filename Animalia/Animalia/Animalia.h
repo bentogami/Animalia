@@ -1,5 +1,6 @@
 #ifndef ANIMALIA_H
 #define ANIMALIA_H
+#include <string>
 
 /*
 The classes Animal and Mammal have already been made for you by another team. Your mission, should you choose to
@@ -22,6 +23,7 @@ enum Sex {MALE, FEMALE, HERM};
 enum HairType {BALD, NORMAL, EXTREME};
 enum Color {RED, GREEN, BLUE, ORANGE, BLACK, PINK};
 
+//Animal
 class Animal
 {
 private:
@@ -32,6 +34,7 @@ public:
 	int Age(int);
 };
 
+//Mammal
 class Mammal : public Animal
 {
 private:
@@ -39,12 +42,10 @@ private:
 public:
 	Mammal(Sex s, int year) : Animal(s,year), hair(NORMAL) { } // Default hairtype is normal
 	Mammal(Sex s, int year, HairType h) : Animal(s,year), hair(h) { } // Otherwise, let them set the hairtype
-	int Speak();
-	
-
-	
+	virtual void Speak(std::string text) = 0;	
 };
 
+//Boring Human
 class Human : public Mammal
 {
 private:
@@ -53,18 +54,17 @@ public:
 	Human(Sex s, int year): Mammal(s, year, NORMAL) { } //Average, and puny, human
 	Human(Sex s, int year, HairType h) : Mammal(s, year, h) { } //Human with strange hair
 	void Think();
+	void Speak(std::string text);
 };
 
+//Mythological Creature
 class Kobold : public Animal
 {
 private:
 	Color color;
-	Sex sex;
-
 public:
 	Kobold(Sex s, int year) : Animal(s, year), color(GREEN) { } //Default color is green, the most common of kobold colors
 	Kobold(Sex s, int year, Color c) : Animal(s, year), color(c) { } //Else, set your special color kobold
-
 };
 
 #endif
